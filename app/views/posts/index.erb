@@ -1,0 +1,11 @@
+<h3>Posts</h3>
+
+<ul>
+<% @posts.each do |post| %>
+  <li><a href="/posts/<%= post.id %>"><%= post.title %></a></li>
+<% end %>
+</ul>
+
+<% if logged_in? %>
+<a href="/posts/new">Make a Post!</a>
+<% end %>

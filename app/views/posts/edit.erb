@@ -1,0 +1,18 @@
+<h3>Edit Post</h3>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+
+<form method="POST" action="/posts/<%= @post.id %>">
+  <input type="hidden" name="_method" value="PUT">
+  <div class="form-field">
+    <input type="text" name="post[title]" value="<%= @post.title %>">
+  </div>
+  <div class="form-field">
+    <textarea rows="15" cols="75" name="post[body]"><%= @post.body %></textarea>
+  </div>
+  <input type="submit">
+</form>
