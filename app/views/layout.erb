@@ -20,21 +20,24 @@
 <body>
   <div class="container">
     <h1><a href="/">Posty Posts</a></h1>
-    <nav>
-      <ul class="no-bullets no-margin no-padding right">
-        <% if logged_in? %>
-          <li class="pipe-separate left inline"><a href="/users/<%= current_user.id %>">Welcome Back, <%= current_user.username.capitalize %>!</a></li>
-          <li class="pipe-separate"><form method="POST" action="/sessions">
-                <input type="hidden" name="_method" value="DELETE" />
-                <input type="submit" class="button" value="Logout" />
-              </form>
-          </li>
-          <% else %>
-          <li class="pipe-separate left"><a href="/sessions/new">Login</a></li>
-          <li class="pipe-separate"><a href="/users/new">Sign Up</a></li>
-        <% end %>
-      </ul>
-    </nav>
+      <nav>
+        <ul>
+          <% if logged_in? %>
+            <li><a href="/users/<%= current_user.id %>">Welcome Back, <%= current_user.username.capitalize %>!</a></li>
+            <li>
+              <div class="button">
+                <form method="POST" action="/sessions">
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <input type="submit" class="button" value="Logout" />
+                </form>
+              </div>
+            </li>
+            <% else %>
+            <li><a href="/sessions/new">Login</a></li>
+            <li><a href="/users/new">Sign Up</a></li>
+          <% end %>
+        </ul>
+      </nav>
     <div class="main">
     <%= yield %>
     </div>
