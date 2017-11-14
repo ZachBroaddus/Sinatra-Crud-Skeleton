@@ -1,13 +1,14 @@
-<h3>User Profile</h3>
+<div class="center-align"><h3>User Profile</h3>
 
 <h4><%= @user.username.capitalize %>'s Posts</h4>
 
 <% if @user.posts.any? %>
 <ul>
-  <% @user.posts.each do |post|%>
-  <li><%= post.title %></li>
+  <% @user.posts.order(created_at: :desc).each do |post|%>
+  <li><a href="/posts/<%= post.id %>"><%= post.title %></a></li>
   <% end %>
 </ul>
 <% else %>
   <p>This user hasn't created any posts</p>
 <% end %>
+</div>

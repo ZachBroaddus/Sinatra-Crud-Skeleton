@@ -1,5 +1,5 @@
 get '/posts' do
-  @posts = Post.all
+  @posts = Post.all.order(created_at: :desc)
   erb :"posts/index"
 end
 
@@ -13,20 +13,11 @@ post '/posts' do
   authenticate
   @post = Post.new(title: params[:title], body: params[:body], user_id: current_user.id)
 
-    p "inside POST /posts"
-    p @post
   if @post.save
-    p "inside if condition"
-    p current_user
-    p "***********************"
-
     current_user.posts << @post
     redirect '/posts'
   else
-    p "inside else condition"
-    p current_user
     @errors = @post.errors.full_messages
-    p @errors
     erb :"posts/new"
   end
 end

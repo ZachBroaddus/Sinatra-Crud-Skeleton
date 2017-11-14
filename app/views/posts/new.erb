@@ -1,4 +1,4 @@
-<h3>Create a Post</h3>
+<div class="center-align"><h3>Create a Post</h3>
 
 <% if @errors %>
   <% @errors.each do |error| %>
@@ -6,8 +6,9 @@
   <% end %>
 <% end %>
 
-<form method="POST" action="/posts">
-    <input type="text" name="title" value="<%= @post.title %>" placeholder="title">
-    <textarea rows="15" cols="75" name="body" placeholder="body"><%= @post.body %></textarea>
+<form id="new-post" method="POST" action="/posts">
+    <input type="text" name="title" value="<%= @post.title %>" placeholder="title"><br><br>
+    <textarea form="new-post" rows="12" cols="50" name="body" placeholder="body"><%= @post.body %></textarea>
   <input type="submit">
 </form>
+</div>

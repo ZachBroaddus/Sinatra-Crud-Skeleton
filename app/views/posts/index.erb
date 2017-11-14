@@ -1,4 +1,4 @@
-<h3>Posts</h3>
+<div class="center-align"><h3>Posts</h3>
 
 <ul>
 <% @posts.each do |post| %>
@@ -9,3 +9,4 @@
 <% if logged_in? %>
 <a href="/posts/new">Make a Post!</a>
 <% end %>
+</div>
